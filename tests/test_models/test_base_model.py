@@ -47,6 +47,19 @@ class TestBasModel(unittest.TestCase):
         self.assertTrue(
                 self.v1.updated_at > self.v2.updated_at,
                 "Save should update the update time")
+    def test_5_save_no_args(self):
+        """Tests save() with no arguments."""
+        with self.assertRaises(TypeError) as e:
+            BaseModel.save()
+        msg = "save() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(e.exception), msg)
+
+    def test_5_save_excess_args(self):
+        """Tests save() with too many arguments."""
+        with self.assertRaises(TypeError) as e:
+            BaseModel.save(self, 98)
+        msg = "save() takes 1 positional argument but 2 were given"
+        self.assertEqual(str(e.exception), msg)
 
     def test_dict(self):
         """Test to_dict"""
@@ -70,13 +83,13 @@ class TestBasModel(unittest.TestCase):
                 self.assertEqual(
                         obj_dict[key], self.v0.__dict__[key],
                         f"Values for key '{key}' should match")
-        self.assertEqual(
-                type(self.v0.updated_at), type(self.v1.updated_at),
-                "Updated time is an instance of the datetime class")
-        self.assertEqual(
-                type(self.v0.created_at), type(self.v1.created_at),
-                "Creation time is an instance of the datetime class")
-        self.assertFalse('__class__' in self.v0.__dict__)
+                self.assertEqual(
+                        type(self.v0.updated_at), type(self.v1.updated_at),
+                        "Updated time is an instance of the datetime class")
+                self.assertEqual(
+                        type(self.v0.created_at), type(self.v1.created_at),
+                        "Creation time is an instance of the datetime class")
+                self.assertFalse('__class__' in self.v0.__dict__)
 
 if __name__ == "__main__":
     unittest.main()

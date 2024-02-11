@@ -20,6 +20,7 @@ classes = {
         "Amenity": Amenity
         }
 
+
 def check_error(arg):
     """checking error class"""
     if arg == "":
@@ -28,6 +29,7 @@ def check_error(arg):
         print("** class doesn't exist **")
     else:
         return True
+
 
 def check_id(cls_name, id):
     """checking error class"""
@@ -40,6 +42,7 @@ def check_id(cls_name, id):
     else:
         return storage.all()[key]
 
+
 def check_type(typ):
     """check type of data type"""
     try:
@@ -49,7 +52,6 @@ def check_type(typ):
         return int(typ)
     except (IndexError, ValueError):
         return typ
-
 
 
 class HBNBCommand(cmd.Cmd):
