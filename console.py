@@ -56,19 +56,6 @@ class HBNBCommand(cmd.Cmd):
     """start class"""
     prompt = "(hbnb) "
 
-    """def pecmd(self, line):
-        before going any where.
-        cmds = ['all', 'show', 'count', 'update', 'destroy']
-        split = line.split('.', 1) + ['', '']
-        class_name = split[0]
-        split = split[1].split('(', 1) + [')']
-        command = split[0]
-        args = split[1].split(')')[0]
-        if class_name in classes and command in cmds:
-            return f'{command} {class_name} {args}'
-        return line"""
-
-
     def do_create(self, arg):
         """usage: create an instance of class"""
         if check_error(arg):
