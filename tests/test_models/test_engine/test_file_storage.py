@@ -11,16 +11,17 @@ class Test_FileStorage(unittest.TestCase):
     def test_filepath(self):
         """Test path file.json"""
         self.assertTrue(isinstance(FileStorage._FileStorage__file_path, str),
-                "__file_path is string")
+                        "__file_path is string")
         self.assertTrue(FileStorage._FileStorage__file_path.endswith('.json'),
-                "__file_path exten is .json")
+                        "__file_path exten is .json")
 
     def test_objects(self):
         """test objects"""
         self.assertTrue(
             isinstance(FileStorage._FileStorage__objects, dict),
-                "that is a dictionary"
+            "that is a dictionary"
                 )
+
 
 class Test_FileStorageInstance(unittest.TestCase):
     """Test all instance isinde the FileStorage class"""
