@@ -16,13 +16,17 @@ class FileStorage():
 
     def new(self, obj):
         """sets __objeccts to obj with id"""
-        key = "{}.{}".format(obj.__class__.__name__ , obj.id)
-        FileStorage.__objects[key] = obj.to_dict()
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """serializes objects to file JSON"""
+        json_dict = FileStorage.__objects.copy()
+        for key, value in json_dict.items():
+            json_dict[key] = value.to_dict()
+
         with open(FileStorage.__file_path, 'w') as fp:
-            fp.write(json.dumps(FileStorage.__objects, indent=4))
+            json.dump(json_dict, fp, indent=4)
 
     def reload(self):
         """deserializes the JSON file to objects if file_path exists"""
@@ -43,6 +47,12 @@ class FileStorage():
                 "Review": Review,
                 "Amenity": Amenity
                 }
-        if os.path.exists(FileStorage.__file_path):
+        try:
             with open(FileStorage.__file_path, 'r') as fp:
-                FileStorage.__objects = json.loads(fp.read())
+                content = fp.read()
+                if content.strip():
+                    FileStorage.__objects = json.loads(content)
+                    for key, value in FileStorage.__objects.items():
+                        FileStorage.__objects[key] = classes[value['__class__']](**value)
+        except FileNotFoundError:
+            FileStorage.__objects = {}

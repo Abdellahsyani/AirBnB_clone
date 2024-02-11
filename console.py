@@ -54,8 +54,6 @@ def check_type(typ):
 
 class HBNBCommand(cmd.Cmd):
     """start class"""
-    intro = "Documented command (type help <topics>)"
-    ruler = '='
     prompt = "(hbnb) "
 
     def pecmd(self, line):
@@ -121,7 +119,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
             else:
                 setattr(instance, attribut, new_val)
-                storage.save()
+                instance.save()
+
+    def do_help(self, arg):
+        """usage: help [class] show all command"""
+        super().do_help(arg)
 
     def emptyline(self):
         """you enter an empty line"""
