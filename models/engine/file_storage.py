@@ -12,7 +12,7 @@ class FileStorage():
 
     def all(self):
         """return the dictionary objects"""
-        return FileStorage.__objects
+        return (FileStorage.__objects)
 
     def new(self, obj):
         """sets __objeccts to obj with id"""
