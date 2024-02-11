@@ -49,9 +49,9 @@ class FileStorage():
                 }
         try:
             with open(FileStorage.__file_path, 'r') as fp:
-                content = fp.read()
-                if content.strip():
-                    FileStorage.__objects = json.loads(content)
+                reading = fp.read()
+                if reading.strip():
+                    FileStorage.__objects = json.loads(reading)
                     for key, value in FileStorage.__objects.items():
                         FileStorage.__objects[key] = \
                                 classes[value['__class__']](**value)

@@ -49,9 +49,9 @@ class Test_FileStorageInstance(unittest.TestCase):
         self.assertTrue(
                 length_2 == length_1 + 1,
                 "that is not add to __object")
-        v1_from_storage = self.storage.all()[f'BaseModel.{v1.id}']
+        v1_storage = self.storage.all()[f'BaseModel.{v1.id}']
         self.assertTrue(
-                v1_from_storage is v1,
+                v1_storage is v1,
                 "storage.new() is add the object as it is in __objects")
 
     def test_reload(self):
