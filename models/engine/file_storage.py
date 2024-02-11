@@ -53,6 +53,7 @@ class FileStorage():
                 if content.strip():
                     FileStorage.__objects = json.loads(content)
                     for key, value in FileStorage.__objects.items():
-                        FileStorage.__objects[key] = classes[value['__class__']](**value)
+                        FileStorage.__objects[key] = \
+                                classes[value['__class__']](**value)
         except FileNotFoundError:
             FileStorage.__objects = {}
