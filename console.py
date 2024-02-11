@@ -120,6 +120,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 setattr(instance, attribut, new_val)
                 instance.save()
+                storage.save()
 
     def do_help(self, arg):
         """usage: help [class] show all command"""
