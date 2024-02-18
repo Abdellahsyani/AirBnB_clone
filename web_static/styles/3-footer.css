@@ -1,5 +1,5 @@
 footer {
-	border top: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
 	margin-top: auto;
 	background-color: white;
 	height: 60px;
@@ -7,6 +7,6 @@ footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font size: larger;
+	font-size: larger;
 	font-weight: 700;
 }
